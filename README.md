@@ -44,7 +44,7 @@ The sounds used for Synesthesia are all free of use. They are free to download o
 - wind
 
 ## Context of development
-This project has been developed in June 2022 in the frame of the class [Réalité virtuelle et augmentée](https://applicationspub.unil.ch/interpub/noauth/php/Ud/ficheCours.php?v_enstyid=88169&v_langue=fr) led by Isaac Pante (SLI, Lettres,[UNIL](https://www.unil.ch/central/en/home.html)).
+This project has been developed in June 2022 in the frame of the class [Réalité virtuelle et augmentée](https://applicationspub.unil.ch/interpub/noauth/php/Ud/ficheCours.php?v_enstyid=88169&v_langue=fr) led by Isaac Pante (SLI, Lettres, [UNIL](https://www.unil.ch/central/en/home.html)).
 
 ## Contributing
 Pull requests are welcome. All optimisations of the code are welcome.
