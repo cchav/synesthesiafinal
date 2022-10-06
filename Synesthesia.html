@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synesthesia</title>
+    <link rel="icon" type="image/png" href="palette.png">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+</head>
+<body>
+
+    <script>
+        // le composant pour sélectionner la couleur
+        AFRAME.registerComponent('palette', {
+
+            init: function () {
+                let donnees = this.data;
+                let el = this.el;
+                let couleur = el.getAttribute('material').color;
+
+                el.addEventListener('mouseenter', function () {
+
+                   //lier musique et couleur
+                   if(el.id == "colorApple") {
+                    let  sound = document.querySelector('#applePlay')
+                    sound.components.sound.playSound();
+                   }
+                   if(el.id == "colorBass") {
+                    let  sound = document.querySelector('#bassPlay')
+                    sound.components.sound.playSound();
+                   }
+                   if(el.id == "colorDrum") {
+                    let  sound = document.querySelector('#drumPlay')
+                    sound.components.sound.playSound();
+                   }
+                   if(el.id == "colorFuture") {
+                    let  sound = document.querySelector('#futurePlay')
+                    sound.components.sound.playSound();
+                   }
+                   if(el.id == "colorFantasy") {
+                    let  sound = document.querySelector('#fantasyPlay')
+                    sound.components.sound.playSound();
+                   }
+                   if(el.id == "colorSub") {
+                    let  sound = document.querySelector('#subPlay')
+                    sound.components.sound.playSound();
+                   }
+                   if(el.id == "colorSci") {
+                    let  sound = document.querySelector('#sciPlay')
+                    sound.components.sound.playSound();
+                   }
+                   if(el.id == "colorBells") {
+                    let  sound = document.querySelector('#bellsPlay')
+                    sound.components.sound.playSound();
+                   }
+
+                   if(el.id == "colorWind") {
+                    let sound = document.querySelector('#windPlay')
+                    sound.components.sound.playSound();
+                   }
+            
+                    couleurSelectionnee = couleur;
+                    document.querySelector('#curseur').setAttribute('material', 'color', couleur)
+
+                });
+
+            }
+        });
+    </script>
+
+    <a-scene background="color: pink">
+        <a-sky src="img\Sky.jpg"></a-sky>
+        <!--Créer le curseur-->
+        <a-camera>
+            <a-entity id='curseur' cursor='fuse : true; fuseTimeout : 600' position="0 0 -1"
+                geometry="primitive : sphere; radius : 0.01" material="color : black; shader : flat; opacity : 0.5"
+                animation="property:scale; to:2 2 2; dur:1000; startEvents: mouseenter;">
+            </a-entity>
+        </a-camera>
+
+        <!--Loader tous les sounds-->
+        <a-assets>
+            <audio id="wind" src="sound\wind.wav" preload="auto"></audio>
+            <audio id="appletree" src="sound\appletree.wav" preload="auto"></audio>
+            <audio id="basscut" src="sound\basscut.wav" preload="auto"></audio>
+            <audio id="drumming" src="sound\drumming.wav" preload="auto"></audio>
+            <audio id="future" src="sound\future.wav" preload="auto"></audio>
+            <audio id="hat" src="sound\hat.wav" preload="auto"></audio>
+            <audio id="subbass" src="sound\subbass.wav" preload="auto"></audio>
+            <audio id="scifi" src="sound\scifi.wav" preload="auto"></audio>
+            <audio id="bells" src="sound\bells.wav" preload="auto"></audio>
+            <audio id="fantasy" src="sound\fantasy.wav" preload="auto"></audio>
+        </a-assets>
+
+        <!--Créer toutes les entités son-->
+        <a-entity id="windPlay" sound="src: #wind; autoplay: false; loop: true; volume: 0.9"></a-entity>
+        <a-entity  id="applePlay" sound="src: #appletree; autoplay: false; loop: true; volume: 0.9"></a-entity>
+        <a-entity  id="bassPlay" sound="src: #basscut; autoplay: false; loop: true; volume: 0.9"></a-entity>
+        <a-entity  id="drumPlay" sound="src: #drumming; autoplay: false; loop: true; volume: 0.9"></a-entity>
+        <a-entity  id="futurePlay" sound="src: #future; autoplay: false; loop: true; volume: 0.9"></a-entity>
+        <a-entity  id="hatPlay" sound="src: #hat; autoplay: false; loop: true; volume: 0.9"></a-entity>
+        <a-entity  id="subPlay" sound="src: #subbass; autoplay: false; loop: true; volume: 0.9"></a-entity>
+        <a-entity  id="sciPlay" sound="src: #scifi; autoplay: false; loop: true; volume: 0.9"></a-entity>
+        <a-entity  id="bellsPlay" sound="src: #bells; autoplay: false; loop: true; volume: 0.9"></a-entity>
+        <a-entity  id="fantasyPlay" sound="src: #fantasy; autoplay: false; loop: true; volume: 0.9"></a-entity>
+
+
+
+
+        <!-- Créer les sphères de la palette-->
+        <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 100000">
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#FFFFFF" id="colorWind" palette position="0.030 1.8 -4" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#FF0000" id="colorApple" palette position="-0.871 2.841 -4" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#FF9900" id="colorBass" palette position="-1.375 1.744 -4" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#FFFF00" id="colorDrum" palette position="-1.046 0.756 -4" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#00FF00" id="colorFuture" palette position="0 0.3 -4" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#00FFFF" id="colorFantasy" palette position="1.000 0.869 -4" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#0000FF" id="colorSub" palette position="1.427 1.876 -4" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#9900FF" id="colorSci" palette position="0.986 2.785 -4" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#FF00FF" id="colorBells" palette position="0.036 3.192 -4" shadow></a-sphere>
+
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#FFFFFF" id="colorWind" palette position="0.030 1.8 5" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#FF0000" id="colorApple" palette position="-0.871 2.841 5" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#FF9900" id="colorBass" palette position="-1.375 1.744 5" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#FFFF00" id="colorDrum" palette position="-1.046 0.756 5" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#00FF00" id="colorFuture" palette position="0 0.3 5" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#00FFFF" id="colorFantasy" palette position="1.000 0.869 5" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#0000FF" id="colorSub" palette position="1.427 1.876 5" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#9900FF" id="colorSci" palette position="0.986 2.785 5" shadow></a-sphere>
+            <a-sphere rotation="90 90 90" height="0.1" radius="0.3" color="#FF00FF" id="colorBells" palette position="0.036 3.192 5" shadow></a-sphere>
+
+        </a-entity>
+    </a-scene>
+
+    <script>
+        let couleurSelectionnee = 'white';
+
+        // Créer les murs
+        for (let x = -10; x < 10; x++) {
+            for (let y = -10; y < 10; y++) {
+                let cube1 = document.createElement('a-box');
+                cube1.setAttribute('position', `${x} ${y} -10.5`);
+                cube1.setAttribute('depth', 0.1);
+                cube1.setAttribute('width', 1);
+                cube1.setAttribute('height', 1);
+                cube1.setAttribute('color', "white");
+                // ajouter un événement d'ajout de couleur
+                cube1.addEventListener('click', () => {
+                    cube1.setAttribute('material', 'color', couleurSelectionnee)
+                })
+
+                let cube2 = document.createElement('a-box');
+                cube2.setAttribute('position', `${x} ${y} +9.5`);
+                cube2.setAttribute('depth', 0.1);
+                cube2.setAttribute('width', 1);
+                cube2.setAttribute('height', 1);
+                cube2.setAttribute('color', "white");
+                // ajouter un événement d'ajout de couleur
+                cube2.addEventListener('click', () => {
+                    cube2.setAttribute('material', 'color', couleurSelectionnee)
+                })
+
+                document.querySelector('a-scene').appendChild(cube1);
+                document.querySelector('a-scene').appendChild(cube2);
+            }
+        }
+
+        for (let z = -10; z < 10; z++) {
+            for (let y = -10; y < 10; y++) {
+                let cube3 = document.createElement('a-box');
+                cube3.setAttribute('position', `-10.5 ${y} ${z}`);
+                cube3.setAttribute('rotation', `0 90 0`);
+                cube3.setAttribute('depth', 0.1);
+                cube3.setAttribute('width', 1);
+                cube3.setAttribute('height', 1);
+                cube3.setAttribute('color', "white");
+                // ajouter un événement d'ajout de couleur
+                cube3.addEventListener('click', () => {
+                    cube3.setAttribute('material', 'color', couleurSelectionnee)
+                })
+
+                let cube4 = document.createElement('a-box');
+                cube4.setAttribute('position', `9.5 ${y} ${z}`);
+                cube4.setAttribute('rotation', `0 90 0`);
+                cube4.setAttribute('depth', 0.1);
+                cube4.setAttribute('width', 1);
+                cube4.setAttribute('height', 1);
+                cube4.setAttribute('color', "white");
+                // ajouter un événement d'ajout de couleur
+                cube4.addEventListener('click', () => {
+                    cube4.setAttribute('material', 'color', couleurSelectionnee)
+                })
+
+                document.querySelector('a-scene').appendChild(cube3);
+                document.querySelector('a-scene').appendChild(cube4);
+            }
+        }
+
+        for (let x = -10; x < 10; x++) {
+            for (let z = -10; z < 10; z++) {
+                let cube5 = document.createElement('a-box');
+                cube5.setAttribute('position', `${x} -10.5 ${z}`);
+                cube5.setAttribute('rotation', `90 0 0`);
+                cube5.setAttribute('depth', 0.1);
+                cube5.setAttribute('width', 1);
+                cube5.setAttribute('height', 1);
+                cube5.setAttribute('color', "white");
+                // ajouter un événement d'ajout de couleur
+                cube5.addEventListener('click', () => {
+                    cube5.setAttribute('material', 'color', couleurSelectionnee)
+                })
+
+                let cube6 = document.createElement('a-box');
+                cube6.setAttribute('position', `${x} 9.5 ${z}`);
+                cube6.setAttribute('rotation', `90 0 0`);
+                cube6.setAttribute('depth', 0.1);
+                cube6.setAttribute('width', 1);
+                cube6.setAttribute('height', 1);
+                cube6.setAttribute('color', "white");
+                // ajouter un événement d'ajout de couleur
+                cube6.addEventListener('click', () => {
+                    cube6.setAttribute('material', 'color', couleurSelectionnee)
+                })
+
+                document.querySelector('a-scene').appendChild(cube5);
+                document.querySelector('a-scene').appendChild(cube6);
+            }
+        }
+
+    </script>
+</body>
