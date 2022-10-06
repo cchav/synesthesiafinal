@@ -18,6 +18,10 @@ The white cube into which the player is is made out of six matrixes that can be 
 Every face of the cube can be used to express creativity and to try to mix visual and auditive dimensions to create something unique.
 
 ![Basic setting](img/basic-setting.png)
+![In Process](img/inprocess.png)
+![Outside](img/outside.png)
+
+These are the 3 steps one can encouter in the game.
 
 ## Usage
 Open the HTML page containing the code. You're now in the Synesthesia world.
